@@ -198,11 +198,13 @@ export default {
   methods: {
     startBar () {
       console.log(window.scrollY)
-      if (window.scrollY > 75) {
+      // if (window.scrollY > 75) {
+      setTimeout(() => {
         for (this.i = 0; this.i < this.skillsProgress.length; this.i++) {
           this.skills[this.i].progress = this.skillsProgress[this.i]
         }
-      }
+      }, 300)
+      // }
     },
     ajustImage () {
       if (window.innerWidth < 800 && window.innerWidth > 400) {
@@ -222,8 +224,9 @@ export default {
 
   },
   mounted () {
-    window.addEventListener('scroll', this.startBar)
+    // window.addEventListener('scroll', this.startBar)
     window.addEventListener('rezise', this.ajustImage)
+    window.onload = this.startBar()
     if (window.innerWidth < 500) {
       this.show = false
     }
