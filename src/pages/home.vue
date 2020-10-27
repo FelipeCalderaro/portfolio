@@ -18,7 +18,7 @@
             class="bebas-font"
             style="height:45px;"
           >
-            OLÁ, EU SOU
+            HELLO, I'M
             <br>
             FELIPE CALDERARO
           </h4>
@@ -27,12 +27,12 @@
             style="font-size: 13px"
           >
             <em>
-              Entre 0's e 1's um mundo novo se desenvolve através do código
+              Between 0's and 1's a new world develops through the code
             </em>
           </p>
           <q-btn
             rounded
-            label="Meu portfolio"
+            label="My portfolio"
             :to="{name:'portfolio'}"
             class="bebas-font"
             style="background: #3f4747; color: #FFFFFF; font-size:14px; width: 100px"

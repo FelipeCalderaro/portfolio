@@ -40,7 +40,7 @@
               <q-btn
                 outline
                 style="color: #3f4747; font-size: 14px"
-                label="sobre mim"
+                label="ABOUT ME"
                 size="sm"
                 :to="{name:'about'}"
                 class="arterio-font"
@@ -59,7 +59,7 @@
             <div class="col-auto q-pr-sm">
               <q-btn
                 style="background: #3f4747; color: #FFFFFF; font-size: 14px"
-                label="contato"
+                label="CONTACT"
                 :to="{name: 'contato'}"
                 size="sm"
                 class="arterio-font"

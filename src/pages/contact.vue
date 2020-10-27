@@ -10,18 +10,18 @@
     </div>
     <div
       class="column q-pa-md"
-      style="max-width: 400px"
+      style="max-width: 420px"
     >
       <h4
         class="text-color bebas-font"
         style="line-height: 0.1"
-      >CONTATO</h4>
-      <p class="text-color arctic-font">Me pergunte, ficare honrado em responder-lhe.</p>
+      >CONTACT</h4>
+      <p class="text-color arctic-font">Ask me anything, I'll be honored.</p>
       <p class="text-color dayrom-font">
         Email:
-        <em class="bebas-font q-pr-lg">j.felipe.calderaro@gmail.com</em>
-        Localização:
-        <em class="bebas-font">Belém, Brasil</em>
+        <em class="bebas-font q-pr-lg">felipecalderaro@calderaro.dev</em>
+        Location:
+        <em class="bebas-font">Belem, Brazil</em>
       </p>
       <q-form
         @submit="onSubmit"
@@ -38,9 +38,9 @@
           dark
           lazy-rules
           v-model="name"
-          label="Seu nome *"
-          hint="Nome e sobrenome"
-          :rules="[ val => val && val.length > 0 || 'Campo não pode estar vazio.']"
+          label="Your name *"
+          hint="name and surname"
+          :rules="[ val => val && val.length > 0 || 'Field cannot be empty.']"
         />
 
         <q-input
@@ -53,10 +53,10 @@
           dark
           lazy-rules
           v-model="email"
-          label="Seu email *"
-          hint="Email comercial ou particular"
+          label="Your email *"
+          hint="Commercial or private email"
           type="email"
-          :rules="[ val => val && val.length > 0 || 'Campo não pode estar vazio.']"
+          :rules="[ val => val && val.length > 0 || 'Field cannot be empty.']"
         />
 
         <q-input
@@ -69,19 +69,19 @@
           dark
           lazy-rules
           v-model="text"
-          label="Sua mensagem *"
+          label="Message *"
           type="textarea"
-          :rules="[ val => val && val.length > 0 || 'Campo não pode estar vazio.']"
+          :rules="[ val => val && val.length > 0 || 'Field cannot be empty.']"
         />
 
         <div>
           <q-btn
-            label="Enviar"
+            label="Send"
             type="submit"
             color="primary"
           />
           <q-btn
-            label="limpar"
+            label="clear"
             type="reset"
             color="white"
             flat
@@ -144,7 +144,7 @@ export default {
         if (response.status === 200) {
           this.$refs.bar.stop()
           this.$q.notify({
-            message: 'Mensagem enviada retornarei-a em breve, obrigado por entrar em contato.',
+            message: 'Message sent I will return it soon, thanks for contacting me.',
             color: 'primary',
             icon: 'check_circle'
           })

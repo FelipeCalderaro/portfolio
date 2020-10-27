@@ -1,12 +1,12 @@
 <template>
   <q-page padding>
     <!-- content -->
-    <div
-      class="row row-wrap"
-      style="display:flex; flex-wrap: wrap"
+    <!-- <div
+      class="column"
+      style="height: 300px; max-height: 100%"
     >
       <div
-        class="col-6 q-pa-xs"
+        class="col-9 q-pa-xs"
         v-for="card in cards"
         v-bind:key="card.title"
       >
@@ -31,14 +31,42 @@
         </q-card>
       </div>
 
+    </div> -->
+    <div
+      class="column"
+      style="height: 600px; max-height: 100%"
+    >
+      <div
+        class="row q-my-sm"
+        v-for="card in cards"
+        :key="card.title"
+      >
+
+        <q-img
+          class="rounded-borders"
+          :src="card.imgUrl"
+          width="400px"
+          @mouseenter="card.show = true"
+          @mouseleave="card.show = false"
+        >
+          <q-slide-transition>
+
+            <div
+              class="q-my-xs absolute-bottom text-center items-center justify-center rounded-borders"
+              v-show="card.show"
+            >
+              <div class="column">
+
+                <p style="font-size: 20px">{{ card.title }}</p>
+                <p style="text-align: justify">{{ card.text }}</p>
+              </div>
+            </div>
+          </q-slide-transition>
+
+        </q-img>
+
+      </div>
     </div>
-    <!-- <q-card class="my-card">
-      <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-        <div class="text-subtitle2 absolute-top text-center arctic-font">
-          Teste
-        </div>
-      </q-img>
-    </q-card> -->
 
   </q-page>
 </template>
@@ -55,31 +83,64 @@ export default {
       cards: [
         {
           title: 'AnimeNew - Notícias sobre Animes, Mangás, Games',
-          text: `Em 2019 obtive durante o tempo em que eu estava buscando projetos para realizar
-                e a primorar meus conhecimentos sobre programação mobile, me deparei com o projeto AnimeNew
-                que me despertou interesse tanto em seu conteudo como também uma ótima forma de praticar
-                diversas implementações com a aplicação. Então entrei em contato, assim iniciei o desenvolvimento
-                do aplicativo.`,
-          imgUrl: require('../assets/AnimeNew.png')
+          text: 'A news application about animes, mangas',
+          imgUrl: require('../assets/AnimeNew.png'),
+          show: false
         },
         {
           title: 'Rádio Ynterativa FM',
-          text: `No começo de 2020 logo após a parceria com o AnimeNew obtive contato com a empresa Total Métrica - Inteligencia Comercial Aplicada, 
-          onde desenvolvi o aplicativo para a Rádio Ynterativa`,
-          imgUrl: require('../assets/YnterativaFM.png')
+          text: 'A radio and news application',
+          imgUrl: require('../assets/YnterativaFM.png'),
+          show: false
         },
         {
           title: 'Little Light In The Dark ',
           text: 'Uma modelagem simples da qual tive a ideia em um caminhar pela noite',
-          imgUrl: require('../assets/white-light.jpg')
+          imgUrl: require('../assets/white-light.jpg'),
+          show: false
         },
         {
           title: 'Mirror Force',
           text: 'A muito tempo, me lembro desta carta de um jogo que tem origem Japonesa chamado Yu-Gi-Oh! criado pela Konami',
-          imgUrl: require('../assets/Yugih.jpg')
+          imgUrl: require('../assets/Yugih.jpg'),
+          show: false
         }
       ]
     }
+  },
+  methods: {
+    array_split (array, splitSize) {
+      var newArray = []
+      if (array.length > 0 && array.length > splitSize) {
+        var betweenNumbers = parseInt((array.length / splitSize).toFixed(0))
+        var space = betweenNumbers
+        for (var i = 0; i < splitSize; i++) {
+          if (i === splitSize - 1) {
+            newArray.push(array.slice(betweenNumbers, array.length))
+          } else if (i === 0) {
+            newArray.push(array.slice(0, betweenNumbers))
+          } else {
+            newArray.push(array.slice(betweenNumbers, betweenNumbers + space))
+            betweenNumbers += space
+          }
+        }
+        console.log(newArray)
+        return newArray
+      }
+    },
+    configureKeys (array) {
+      var newArray = []
+      array.forEach(element => {
+        newArray.push({ key: Math.random(), theArray: element })
+      })
+      return newArray
+    }
+
+  },
+  mounted () {
+    // this.cards = this.configureKeys(this.array_split(this.cards, 2))
+
+    console.log(this.cards)
   }
 }
 </script>

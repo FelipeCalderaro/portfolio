@@ -1,2 +1,2 @@
 import { Notify } from 'quasar'
-Notify.create('Bem-vindo')
+Notify.create('Welcome')

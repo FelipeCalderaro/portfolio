@@ -7,7 +7,7 @@
         class="title-color calderdale-regular-font"
         style="font-size: 30px"
       >
-        SOBRE MIM
+        ABOUT ME
       </h5>
       <q-separator
         class="col"
@@ -23,13 +23,12 @@
         class="arctic-font"
         style="width: 40%; text-align: justify"
       >
-        Nascido em Belém, Brasil - 1999.
+        Born in Belém, Brazil - 1999.
         <br>
         <br>
-        Trabalho como desenvolvedor mobile utilizando o Framework Flutter e backend com Python, atualmente estudo
-        Engenharia de Computação no Centro Universitário do Estado do Pará - CESUPA.
+        I'm a Computer Engineer Student with passion in system development, current working as Mobile Developer using the hybrid development platform Flutter
         <br>
-        Continuamente procurando por novos projetos para criar e participar assim aprendendo com os desafios que aparecem.
+        Continuously looking for new projects to develop and participate in, learning from challenges and overcoming limits.
       </p>
 
       <div class="q-py-md">
@@ -57,7 +56,7 @@
       >Felipe Calderaro</p>
 
       <div class="row">
-        <p class="arterio-font">DESENVOLVEDOR FULLSTACK</p>
+        <p class="arterio-font">FULLSTACK DEVELOPER</p>
         <div class="q-px-sm">
           <q-separator
             color="primary"
@@ -65,7 +64,7 @@
             vertical
           ></q-separator>
         </div>
-        <p class="arterio-font">PROGRAMADOR</p>
+        <p class="arterio-font">PROGRAMMER</p>
         <div class="q-px-sm">
           <q-separator
             color="primary"
@@ -73,7 +72,33 @@
             vertical
           ></q-separator>
         </div>
-        <p class="arterio-font">ENGENHEIRO DE COMPUTAÇÃO</p>
+        <p class="arterio-font">COMPUTER ENGINEER</p>
+      </div>
+
+      <div class="row">
+        <q-img
+          :style="{cursor: 'pointer'}"
+          @click="github()"
+          class="rounded-borders"
+          :ratio="1"
+          width="30px"
+          src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+        />
+
+        <q-separator
+          vertical
+          class="q-mx-xs"
+        />
+
+        <q-img
+          :style="{cursor: 'pointer'}"
+          @click="linkedin()"
+          class="rounded-borders"
+          :ratio="1"
+          width="30px"
+          src="https://img2.gratispng.com/20180529/str/kisspng-linkedin-computer-icons-logo-professional-network-social-networks-5b0d65b29ec943.2054111815276046586504.jpg"
+        />
+
       </div>
 
       <p
@@ -84,62 +109,32 @@
       <!-- barras lineares -->
 
       <div class="column q-col-gutter-x-md">
-        <p
-          class="arctic-font"
-          style="font-size: 14px; height: 0px"
-        >Flutter</p>
-        <div class="row items-center">
-          <q-linear-progress
-            size="15px"
-            style="width: 30%"
-            :value="progressBar1"
-          ></q-linear-progress>
+        <div
+          v-for="skill in skills"
+          :key="skill.name"
+        >
 
           <p
-            class="self-end q-pl-sm arctic-font"
-            style="font-size: 12px"
-          >
-            {{ progressBar1 * 100}}%
-          </p>
+            class="arctic-font"
+            style="font-size: 14px; height: 0px"
+          >{{ skill.name }}</p>
+          <div class="row items-center">
+            <q-linear-progress
+              size="10px"
+              style="width: 30%"
+              :value="skill.progress"
+            ></q-linear-progress>
+
+            <p
+              class="self-end q-pl-sm arctic-font"
+              style="font-size: 12px"
+            >
+              {{ skill.progress * 100}}%
+            </p>
+          </div>
+
         </div>
 
-        <p
-          class="arctic-font"
-          style="font-size: 14px; height: 0px"
-        >Python</p>
-        <div class="row items-center">
-          <q-linear-progress
-            size="15px"
-            style="width: 30%"
-            :value="progressBar2"
-          ></q-linear-progress>
-
-          <p
-            class="self-end q-pl-sm arctic-font"
-            style="font-size: 12px"
-          >
-            {{ progressBar2 * 100}}%
-          </p>
-        </div>
-
-        <p
-          class="arctic-font"
-          style="font-size: 14px; height: 0px"
-        >Web</p>
-        <div class="row items-center">
-          <q-linear-progress
-            size="15px"
-            style="width: 30%"
-            :value="progressBar3"
-          ></q-linear-progress>
-
-          <p
-            class="self-end q-pl-sm arctic-font"
-            style="font-size: 12px"
-          >
-            {{ progressBar3 * 100}}%
-          </p>
-        </div>
       </div>
       <!-- fim barras lineares -->
 
@@ -168,9 +163,31 @@ export default {
   },
   data () {
     return {
-      progressBar1: 0.0,
-      progressBar2: 0.0,
-      progressBar3: 0.0,
+      i: 0,
+      skills: [
+        {
+          name: 'Flutter',
+          progress: 0.0
+        },
+        {
+          name: 'Python',
+          progress: 0.0
+        },
+        {
+          name: 'Flask',
+          progress: 0.0
+        },
+        {
+          name: 'Node.Js',
+          progress: 0.0
+        }
+      ],
+      skillsProgress: [
+        0.79,
+        0.83,
+        0.77,
+        0.64
+      ],
       imgConfig: {
         width: (window.innerWidth * 0.47) + 'px',
         height: window.innerHeight + 'px'
@@ -180,23 +197,27 @@ export default {
   },
   methods: {
     startBar () {
-      if (window.scrollY > 130) {
-        this.progressBar1 = 0.79
-        this.progressBar2 = 0.83
-        this.progressBar3 = 0.66
+      console.log(window.scrollY)
+      if (window.scrollY > 75) {
+        for (this.i = 0; this.i < this.skillsProgress.length; this.i++) {
+          this.skills[this.i].progress = this.skillsProgress[this.i]
+        }
       }
     },
     ajustImage () {
-      console.log('aquiiiii')
       if (window.innerWidth < 800 && window.innerWidth > 400) {
-        console.log('aqui')
         this.imgConfig.width = (window.innerWidth * 0.47) + 'px'
         this.imgConfig.height = window.innerHeight + 'px'
       } else if (window.innerHeight < 400) {
-        console.log('change state of img')
         this.show = false
         console.log(this.show)
       }
+    },
+    github () {
+      window.location = 'https://github.com/FelipeCalderaro'
+    },
+    linkedin () {
+      window.location = 'https://www.linkedin.com/in/felipe-calderaro-57531a153/'
     }
 
   },
